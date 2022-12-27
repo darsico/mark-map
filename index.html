@@ -14,10 +14,10 @@
       @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,700;1,300;1,500&display=swap');
       html {
         font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        overflow: hidden;
       }
       #map {
-        height: 100%;
+        height: 100vh;
         width: 100%;
       }
       .places {
@@ -67,7 +67,7 @@
       }
 
       .map {
-        height: 100vh;
+        max-height: 100%;
         width: 100%;
       }
       .select {
@@ -112,6 +112,9 @@
       .placesDesktop {
         display: none;
         padding: 1.5rem;
+        display: flex;
+        overflow-x: hidden;
+        gap: 1rem;
       }
       .place_district {
         font-weight: bold;
@@ -185,8 +188,8 @@
       currentInfoWindow = null;
       locationSelect = null;
       buttons = [];
-
-      const wordsToIgnore = ['de', 'del', 'la', 'las', 'los', 'y', 'e', 'en', 'S.A.C', 'S.A', 'S.R.L', 'S.R.L.', 'S.A.C.', 'S.A.', 'E.I.R.L', 'E.I.R.L.'];
+      const limaCoords = { lat: -12.049877374976049, lng: -77.01664906574291 };
+      const wordsToIgnore = ['de', 'del', 'la', 'las', 'los', 'y', 'e', 'en', 'S.A.C', 'S.A', 'S.R.L', 'S.R.L.', 'S.A.C.', 'S.A.', 'E.I.R.L', 'E.I.R.L.', 'CE.RO.A', 'JAML', 'SCF', 'ATM'];
 
       const sanitizeUpper = (string) => {
         const array = string.split(' ');
@@ -228,15 +231,15 @@
             place.id = index;
             return place;
           });
-        console.log(data, 'getData');
+
         return data;
       };
 
       async function initMap() {
         const info = await getData();
-        console.log(info, 'info');
+
         const mapContainer = document.getElementById('map');
-        const limaCoords = { lat: -12.049877374976049, lng: -77.01664906574291 };
+
         map = new google.maps.Map(mapContainer, {
           zoom: 11,
           center: limaCoords,
@@ -256,7 +259,6 @@
           const infoWindow = new google.maps.InfoWindow({
             padding: 20,
             content: `<div class="info-window">
-
                 <h1 class="place_compania--info-window">${sanitizeUpper(place?.compania)}</h1>
                 <p class="place_direccion">${sanitizeUpper(place?.direccion)}</p>
                 <p class="place_telefono">${place?.telefono}</p>
@@ -291,8 +293,7 @@
       };
       const isMobile = () => {
         const width = window.innerWidth;
-        if (width < 768) return true;
-        return false;
+        return width < 768;
       };
 
       const getSinglePlaceTemplate = (place) => {
@@ -308,7 +309,7 @@
         const desktopTemplate = data?.map((place) => {
           return getSinglePlaceTemplate(place);
         });
-        return desktopTemplate;
+        return desktopTemplate.join('');
       };
 
       const getSwiperTemplate = (data) => {
@@ -320,7 +321,6 @@
               })
               .join('')}
           </div>
-
         </div>`;
         return swiperTemplate;
       };
@@ -405,6 +405,8 @@
           if (selectedDistrict === '0') {
             renderPlacesHtml(data);
             buttonsPlaceFunctionality();
+            map.setCenter(limaCoords);
+            map.setZoom(12);
           }
         });
 
@@ -415,6 +417,9 @@
           selectElement.value = '0';
           renderPlacesHtml(data);
           buttonsPlaceFunctionality();
+          map.setCenter(limaCoords);
+          map.setZoom(12);
+          currentInfoWindow.close();
         });
       };
 
