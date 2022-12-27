@@ -112,7 +112,6 @@
       .placesDesktop {
         display: none;
         padding: 1.5rem;
-        display: flex;
         overflow-x: hidden;
         gap: 1rem;
       }
@@ -291,10 +290,7 @@
         const sorted = uniqueDistricts.sort((a, b) => (a > b ? 1 : -1));
         return sorted;
       };
-      const isMobile = () => {
-        const width = window.innerWidth;
-        return width < 768;
-      };
+      const isMobile = () => window.innerWidth < 768;
 
       const getSinglePlaceTemplate = (place) => {
         const buttonTemplate = `<div class="place" id="${place?.id}">
@@ -328,12 +324,17 @@
       const renderPlacesHtml = (data) => {
         const placesDesktop = document.getElementById('placesDesktop');
         const placesMobile = document.getElementById('placesMobile');
-        const defaultTemplate = isMobile() ? getSwiperTemplate(data) : getDesktopTemplate(data);
+        let defaultTemplate = '';
+
+        if (isMobile()) {
+          defaultTemplate = getSwiperTemplate(data);
+          placesMobile.innerHTML = defaultTemplate;
+        } else {
+          defaultTemplate = getDesktopTemplate(data);
+          placesDesktop.innerHTML = defaultTemplate;
+        }
         //const desktopTemplate = getDesktopTemplate(data);
         //const swiperTemplate = getSwiperTemplate(data);
-
-        placesDesktop.innerHTML = defaultTemplate;
-        placesMobile.innerHTML = defaultTemplate;
 
         if (isMobile()) {
           const swiper = new Swiper('.swiper-container', {
