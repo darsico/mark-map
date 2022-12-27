@@ -364,14 +364,12 @@
           buttons = document.querySelectorAll('.place');
           buttons?.forEach((button) => {
             button.addEventListener('click', (e) => {
-              console.log(e.currentTarget, 'e.currentTarget');
               buttons.forEach((btn) => {
                 btn.classList.remove('active');
               });
 
               event.currentTarget.classList.add('active');
               const id = e.currentTarget.id;
-              console.log(id, 'id');
               const selectedMarker = markers[id];
               const selectedWindowsInfo = infoWindows[id];
               const place = data.find((place) => place.id === id);
