@@ -205,6 +205,9 @@
       };
 
       const splitString = (string) => {
+        if (!string || typeof string !== 'string') {
+          return { lat: NaN, lng: NaN };
+        }
         const array = string.split(',');
         const lat = parseFloat(array[0]);
         const lng = parseFloat(array[1]);
@@ -215,13 +218,12 @@
       const getData = async () => {
         const response = await fetch(dataEndpoint);
         const res = await response.json();
-
-        const data = res
-          .filter((place) => place.coordenadas !== '------' && place.coordenadas !== undefined)
+      
+        const data = res.filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
           ?.sort((a, b) => {
             const nameA = a.distrito;
             const nameB = b.distrito;
-
+      
             return nameA > nameB ? 1 : -1;
           })
           .map((place, index) => {
