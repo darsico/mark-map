@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,700;1,300;1,500&display=swap" rel="stylesheet" />
-    <title>Document</title>
+
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,700;1,300;1,500&display=swap');
-      html {
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
-      }
-      #map {
+      #storeFinder {
+          font-family: Jost;
+      }    
+      #storeFinder #map {
         height: 100vh;
         width: 100%;
       }
-      .places {
+      #storeFinder .places {
         height: fit-content;
         display: flex;
         overflow-x: auto;
       }
-      .configCtn {
+      #storeFinder .configCtn {
         position: relative;
         padding-top: 100px;
       }
-      .selectCtn {
+      #storeFinder .selectCtn {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -37,7 +26,7 @@
         z-index: 100;
         background-color: #fff;
       }
-      .place {
+      #storeFinder .place {
         padding: 25px;
         border-radius: 10px;
         cursor: pointer;
@@ -47,30 +36,30 @@
         word-break: break-all;
         background-color: rgb(236, 236, 236);
       }
-      .place:hover {
+      #storeFinder .place:hover {
         background: rgb(224, 224, 224);
       }
-      .info-window {
+      #storeFinder .info-window {
         padding: 10px;
       }
-      .place_compania--info-window {
+      #storeFinder .place_compania--info-window {
         color: #78156d;
         font-weight: bold;
         font-size: 1.3rem;
       }
-      .active {
+      #storeFinder .active {
         background-color: rgb(219, 219, 219);
       }
 
-      .container {
+      #storeFinder .container {
         height: 100vh;
       }
 
-      .map {
+      #storeFinder .map {
         max-height: 100%;
         width: 100%;
       }
-      .select {
+      #storeFinder .select {
         width: 100%;
         height: 40px;
         border: 0 hidden;
@@ -83,11 +72,11 @@
         font-weight: 700;
         margin-right: 20px;
       }
-      .select option {
+      #storeFinder .select option {
         font-size: 0.95em;
         padding: 10px;
       }
-      .selectWrapper {
+      #storeFinder .selectWrapper {
         display: flex;
         flex-direction: column;
         border-bottom: 2px solid #78156d;
@@ -97,75 +86,75 @@
         background: #fff;
         padding: 10px;
       }
-      .clearSelect {
+      #storeFinder .clearSelect {
         cursor: pointer;
         font-size: 0.76em;
         padding: 0 10px 5px 20px;
         color: #470b408f;
         text-decoration: underline;
       }
-      .placesMobile {
+      #storeFinder .placesMobile {
         display: block;
         padding: 20px;
         overflow-x: hidden;
       }
-      .placesDesktop {
+      #storeFinder .placesDesktop {
         display: none;
         padding: 1.5rem;
         overflow-x: hidden;
         gap: 1rem;
       }
-      .place_district {
+      #storeFinder .place_district {
         font-weight: bold;
         font-size: 1.4rem;
         color: rgb(83, 83, 83);
       }
-      .place_compania {
+      #storeFinder .place_compania {
         font-size: 1.2em;
         color: rgb(83, 83, 83);
       }
-      .place_direccion,
-      .place_telefono,
-      .place_ruc,
-      .place_email {
+      #storeFinder .place_direccion,
+      #storeFinder .place_telefono,
+      #storeFinder .place_ruc,
+      #storeFinder .place_email {
         font-size: 0.9rem;
         color: rgb(85, 85, 85);
       }
 
       @media (min-width: 768px) {
-        .container {
+        #storeFinder .container {
           display: grid;
           grid-template-columns: 2fr 4fr;
         }
 
-        .configCtn {
+        #storeFinder .configCtn {
           position: sticky;
           top: 0;
           height: 100vh;
           overflow-y: hidden;
         }
-        .places {
+        #storeFinder .places {
           overflow-x: hidden;
           height: 100%;
           flex-direction: column;
         }
-        .placesDesktop {
+        #storeFinder .placesDesktop {
           display: flex;
           overflow-x: hidden;
           height: 100%;
           flex-direction: column;
         }
-        .placesMobile {
+        #storeFinder .placesMobile {
           display: none;
         }
-        .place {
+        #storeFinder .place {
           border-bottom: 1px solid #ccc;
         }
       }
     </style>
-  </head>
-  <body>
-    <section class="container">
+
+<div id="storeFinder">
+    <section  class="container">
       <div class="configCtn">
         <div class="selectWrapper">
           <div id="selectCtn" class="selectCtn"></div>
@@ -176,10 +165,11 @@
       </div>
       <div id="map" style="width: auto" class="map"></div>
     </section>
+  
+</div>
 
-    <script>
-
-      const dataEndpoint = './pets-data.json';
+<script>
+      //const dataEndpoint = '{{ 'pets-data.json' | asset_url }}';
       const markerIcon = 'https://res.cloudinary.com/dqp2lunnu/image/upload/v1672107793/Cluster/marker-basa_kv9up1.png';
 
       let map = null;
@@ -201,6 +191,7 @@
           return newWord;
         });
         const newString = newArray.join(' ');
+
         return newString;
       };
 
@@ -215,12 +206,14 @@
         return coords;
       };
 
-      const filterData = (data) => {
-        const filtered = data.filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
+      const getData = async () => {
+        const response = await fetch(dataEndpoint);
+        const res = await response.json();
+      
+        const data = res.filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
           ?.sort((a, b) => {
             const nameA = a.distrito;
             const nameB = b.distrito;
-      
             return nameA > nameB ? 1 : -1;
           })
           .map((place, index) => {
@@ -229,13 +222,7 @@
             place.id = index;
             return place;
           });
-          return filtered
-      }
 
-      const getData = async () => {
-        const response = await fetch(dataEndpoint);
-        const res = await response.json();
-        const data = filterData(res);
         return data;
       };
 
@@ -432,5 +419,3 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA69Z2Vc24NhwJKPw7B2Xpfe30HnUfE5G4&callback=initMap" async defer></script>
-  </body>
-</html>
