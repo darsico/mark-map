@@ -315,8 +315,11 @@
         return coords;
       };
 
+      const randomUniqueUUID = () => {
+        return `_${Math.random().toString(36).substr(2, 9)}`;
+      };
+
       const filterData = (data) => {
-      
         const filtered = data
           .filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
           .sort((a, b) => {
@@ -327,7 +330,7 @@
           .map((place, index) => {
             const coords = splitString(place.coordenadas);
             place.coordenadas = coords;
-            place.id = self.crypto.randomUUID();
+            place.id = randomUniqueUUID();
             return place;
           });
         return filtered;
@@ -477,9 +480,7 @@
     
               const id = e.currentTarget.id;
               const selectedMarker = markers.find((marker) => marker.id === id);
-              const selectedWindowsInfo = infoWindows.find(
-                (infoWindow) => infoWindow.id === id
-              );
+              const selectedWindowsInfo = infoWindows.find((infoWindow) => infoWindow.id === id);
               const place = data.find((place) => place.id === id);
               const markerCoors = selectedMarker?.getPosition();
 
