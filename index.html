@@ -6,179 +6,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,700;1,300;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,700;1,300;1,500&display=swap');
-      html {
-        font-family: 'Inter', sans-serif;
+      #storeFinder {
+        font-family: 'Jost', sans-serif;
         overflow-x: hidden;
-      }
-      #map {
-        height: 100vh;
-        width: 100%;
-      }
-      .places {
-        height: fit-content;
-        display: flex;
-        overflow-x: auto;
-      }
-      .configCtn {
-        position: relative;
-        padding-top: 100px;
-      }
-      .selectCtn {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        z-index: 100;
-        background-color: #fff;
-      }
-      .place {
-        padding: 25px;
-        border-radius: 10px;
-        cursor: pointer;
-        display: flex;
-        gap: 10px;
-        flex-direction: column;
-        word-break: break-all;
-        background-color: rgb(236, 236, 236);
-      }
-      .place:hover {
-        background: rgb(224, 224, 224);
-      }
-      .info-window {
-        padding: 10px;
-      }
-      .place_compania--info-window {
-        color: #78156d;
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
-      .active {
-        background-color: rgb(219, 219, 219);
-      }
-
-      .container {
-        height: 100vh;
-      }
-
-      .map {
-        max-height: 100%;
-        width: 100%;
-      }
-      .select {
-        width: 100%;
-        height: 40px;
-        border: 0 hidden;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 1em;
-        background: #fff;
-        color: #78156d;
-        border: 1px solid #78156d;
-        font-weight: 700;
-        margin-right: 20px;
-      }
-      .select option {
-        font-size: 0.95em;
-        padding: 10px;
-      }
-      .selectWrapper {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 2px solid #78156d;
-        position: absolute;
-        width: 100%;
-        top: 0;
-        background: #fff;
-        padding: 10px;
-      }
-      .clearSelect {
-        cursor: pointer;
-        font-size: 0.76em;
-        padding: 0 10px 5px 20px;
-        color: #470b408f;
-        text-decoration: underline;
-      }
-      .placesMobile {
-        display: block;
-        padding: 20px;
-        overflow-x: hidden;
-      }
-      .placesDesktop {
-        display: none;
-        padding: 1.5rem;
-        overflow-x: hidden;
-        gap: 1rem;
-      }
-      .place_district {
-        font-weight: bold;
-        font-size: 1.4rem;
-        color: rgb(83, 83, 83);
-      }
-      .place_compania {
-        font-size: 1.2em;
-        color: rgb(83, 83, 83);
-      }
-      .place_direccion,
-      .place_telefono,
-      .place_ruc,
-      .place_email {
-        font-size: 0.9rem;
-        color: rgb(85, 85, 85);
-      }
-
-      @media (min-width: 768px) {
-        .container {
-          display: grid;
-          grid-template-columns: 2fr 4fr;
-        }
-
-        .configCtn {
-          position: sticky;
-          top: 0;
+        box-sizing: border-box;
+        }    
+        #storeFinder #map {
           height: 100vh;
-          overflow-y: hidden;
+          width: 100%;
         }
-        .places {
-          overflow-x: hidden;
-          height: 100%;
-          flex-direction: column;
-        }
-        .placesDesktop {
+        #storeFinder .places {
+          height: fit-content;
           display: flex;
-          overflow-x: hidden;
-          height: 100%;
+          overflow-x: auto;
+        }
+        #storeFinder .configCtn {
+          position: relative;
+          padding-top: 100px;
+        }
+        #storeFinder .selectCtn {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          z-index: 100;
+          background-color: #fff;
+        }
+        #storeFinder .place {
+          padding: 25px;
+          border-radius: 10px;
+          cursor: pointer;
+          display: flex;
+          gap: 10px;
           flex-direction: column;
+          background-color: rgb(236, 236, 236);
         }
-        .placesMobile {
+        #storeFinder .place:hover {
+          background: rgb(224, 224, 224);
+        }
+       .info-window {
+        font-family: 'Jost', sans-serif;
+          padding: 10px;
+          max-width: 300px;
+        }
+         .place_compania--info-window {
+          color: #78156d;
+          font-weight: bold;
+          font-size: 1.3rem;
+        }
+        #storeFinder .active {
+          background-color: rgb(219, 219, 219);
+        }
+  
+        #storeFinder .container {
+          height: 100vh;
+        }
+  
+        #storeFinder .map {
+          max-height: 100%;
+          width: 100%;
+        }
+        #storeFinder .select {
+          font-family: 'Jost', sans-serif;
+          width: 100%;
+          height: 40px;
+          border: 0 hidden;
+          border-radius: 5px;
+          padding: 10px 20px;
+          font-size: 1em;
+          background: #fff;
+          color: #78156d;
+          border: 1px solid #78156d;
+          font-weight: 700;
+          margin-right: 20px;
+        }
+        #storeFinder .select option {
+          font-size: 0.95em;
+          padding: 10px;
+        }
+        #storeFinder .selectWrapper {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 2px solid #78156d;
+          position: absolute;
+          width: 100%;
+          top: 0;
+          background: #fff;
+          padding: 10px;
+        }
+        #storeFinder .clearSelect {
+          font-family: 'Jost', sans-serif;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 0.76em;
+          padding: 0 10px 5px 20px;
+          color: #470b408f;
+          text-decoration: underline;
+        }
+        #storeFinder .placesMobile {
+          display: block;
+          padding: 20px;
+          overflow-x: hidden;
+        }
+        #storeFinder .placesDesktop {
           display: none;
+          padding: 1.5rem;
+          overflow-x: hidden;
+          gap: 1rem;
         }
-        .place {
-          border-bottom: 1px solid #ccc;
+        #storeFinder .place_district {
+          font-weight: bold;
+          font-size: 1.4rem;
+          color: rgb(83, 83, 83);
         }
-      }
+        #storeFinder .place_compania {
+          font-size: 1.2em;
+          color: rgb(83, 83, 83);
+        }
+        #storeFinder .place_direccion,
+        .info-window .place_direccion,
+        #storeFinder .place_telefono,
+        .info-window .place_telefono,
+        #storeFinder .place_ruc,
+        .info-window .place_ruc,
+        #storeFinder .place_email, 
+        .info-window .place_email {
+          font-size: 0.9rem;
+          font-weight: 300;
+          color: rgb(85, 85, 85);
+        }
+        #storeFinder .place_email {
+          word-break: break-all;
+        }
+        @media (min-width: 768px) {
+          #storeFinder {
+            overflow-y: hidden;
+          }
+          #storeFinder .selectWrapper {
+            position: sticky;
+          }
+          #storeFinder .container {
+            display: grid;
+            grid-template-columns: 2fr 4fr;
+          }
+  
+          #storeFinder .configCtn {
+            top: 0;
+            height: 100vh;
+            padding-top: 0;
+            overflow: hidden;
+          }
+          #storeFinder .places {
+            overflow-x: hidden;
+            height: 100%;
+            flex-direction: column;
+          }
+          #storeFinder .placesDesktop {
+            display: flex;
+            overflow-x: hidden;
+            height: 100%;
+            height: -webkit-fill-available;
+            flex-direction: column;
+            padding-bottom: 200px;
+          }
+          #storeFinder .placesMobile {
+            display: none;
+          }
+          #storeFinder .place {
+            border-bottom: 1px solid #ccc;
+          }
+        }
+
     </style>
   </head>
   <body>
-    <section class="container">
-      <div class="configCtn">
-        <div class="selectWrapper">
-          <div id="selectCtn" class="selectCtn"></div>
-          <p id="clearSelect" class="clearSelect">Limpiar</p>
+    <section id="storeFinder">
+      <div  class="container">
+        <div class="configCtn">
+          <div class="selectWrapper">
+            <div id="selectCtn" class="selectCtn"></div>
+            <p id="clearSelect" class="clearSelect">Limpiar</p>
+          </div>
+          <div id="placesDesktop" class="placesDesktop"></div>
+          <div id="placesMobile" class="placesMobile"></div>
         </div>
-        <div id="placesDesktop" class="placesDesktop"></div>
-        <div id="placesMobile" class="placesMobile"></div>
+        <div id="map" style="width: auto" class="map"></div>
       </div>
-      <div id="map" style="width: auto" class="map"></div>
-    </section>
+  </section>
 
     <script>
       const dataEndpoint = './pets-data.json';
+      const petsData = [
+      {
+        "id": "1",
+        "ruc": "20605133186",
+        "compania": "ALERTACAN E.I.R.L.",
+        "direccion": "JR. TACNA NRO. 942 LIMA - LIMA - MAGDALENA DEL MAR",
+        "email": "elofertonzoo@gmail.com",
+        "contacto": "CARMEN DULANTO",
+        "telefono": "941763149",
+        "departamento": "DEPARTAMENTO LIMA",
+        "provincia": "LIMA",
+        "distrito": "MAGDALENA DEL MAR",
+        "coordenadas": "-12.089252473570756, -77.07064741633577"
+      },
+      {
+        "id": "2",
+        "ruc": "20554612289",
+        "compania": "ANIMAL HOUSE S.A.C.",
+        "direccion": "AV. CANTO GRANDE NRO. 3371 URB. CANTO NUEVO (ALT PARADERO 6 DE AV CANTOGRANDE) LIMA - LIMA - SAN JUAN DE LURIGANCHO",
+        "email": "animalhouse7ctogrande@gmail.com",
+        "contacto": "PAOLA ALARCÓN",
+        "telefono": "992713915",
+        "departamento": "DEPARTAMENTO LIMA",
+        "provincia": "LIMA",
+        "distrito": "SAN JUAN DE LURIGANCHO",
+        "coordenadas": "-11.973312419834285, -77.00774430284463"
+      },
+      {
+        "id": "3",
+        "ruc": "20603611579",
+        "compania": "ATM SERVET S.A.C.",
+        "direccion": "AV. ANDRES AVELINO CACERES NRO. 521 URB. BARRIO MEDICO (ALT CDRA 55 Y 56 DE REPUBLICA DE PANAMA) LIMA - LIMA - SURQUILLO",
+        "email": "info@puntovet.pe",
+        "contacto": "ANDREA CALDERÓN",
+        "telefono": "920371211",
+        "departamento": "DEPARTAMENTO LIMA",
+        "provincia": "LIMA",
+        "distrito": "SURQUILLO",
+        "coordenadas": "-12.13767835480852, -77.01772110284294"
+      },
+      {
+        "id": "4",
+        "ruc": "10106463528",
+        "compania": "CARMEN VIOLETA PIZARRO TIRADO",
+        "direccion": "AV. BENAVIDES 4007 SURCO",
+        "email": "violetapizarrovet@hotmail.com",
+        "contacto": "VIOLETA PIZARRO",
+        "telefono": "981023563",
+        "departamento": "DEPARTAMENTO LIMA",
+        "provincia": "LIMA",
+        "distrito": "SANTIAGO DE SURCO",
+        "coordenadas": "-12.127749810037368, -76.99364427585833"
+      },
+      {
+        "id": "5",
+        "ruc": "20506913498",
+        "compania": "CE.RO.A S.A.C.",
+        "direccion": "AV. HUAYLAS NRO. 2255 URB. SANTA LEONOR (ALT CASA DE LA MUJER) LIMA - LIMA - CHORRILLOS",
+        "email": "angelrivera73@hotmail.com",
+        "contacto": "ANGEL RIVERA",
+        "telefono": "996412524",
+        "departamento": "DEPARTAMENTO LIMA",
+        "provincia": "LIMA",
+        "distrito": "CHORRILLOS",
+        "coordenadas": "-12.179237629307085, -77.0135531857182"
+      },
+      ]
+      
       const markerIcon = 'https://res.cloudinary.com/dqp2lunnu/image/upload/v1672107793/Cluster/marker-basa_kv9up1.png';
 
       let map = null;
@@ -189,7 +280,7 @@
       buttons = [];
       const limaCoords = { lat: -12.049877374976049, lng: -77.01664906574291 };
       const wordsToIgnore = ['de', 'del', 'la', 'las', 'los', 'y', 'e', 'en', 'S.A.C', 'S.A', 'S.R.L', 'S.R.L.', 'S.A.C.', 'S.A.', 'E.I.R.L', 'E.I.R.L.', 'CE.RO.A', 'JAML', 'SCF', 'ATM'];
-
+      data = [];
       const sanitizeUpper = (string) => {
         const array = string.split(' ');
         const newArray = array.map((word) => {
@@ -214,12 +305,11 @@
         const coords = { lat, lng };
         return coords;
       };
-
-      const getData = async () => {
-        const response = await fetch(dataEndpoint);
-        const res = await response.json();
-      
-        const data = res.filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
+      const randomUniqueUUID = () => {
+        return `_${Math.random().toString(36).substr(2, 9)}`;
+      };
+      const filterData = (data) => {
+       const filtered =  data.filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
           ?.sort((a, b) => {
             const nameA = a.distrito;
             const nameB = b.distrito;
@@ -229,15 +319,21 @@
           .map((place, index) => {
             const coords = splitString(place.coordenadas);
             place.coordenadas = coords;
-            place.id = index;
+            place.id = `${randomUniqueUUID()}` ;
             return place;
           });
-
-        return data;
+          return filtered;
+      }
+      const getData = async () => {
+        const cleanedJson = JSON.stringify(petsData);
+        const response = JSON.parse(cleanedJson);
+        const filtered = filterData(response);
+          data = filtered
+        //return data;
       };
 
       async function initMap() {
-        const info = await getData();
+        const info = data;
 
         const mapContainer = document.getElementById('map');
 
@@ -292,6 +388,7 @@
         const sorted = uniqueDistricts.sort((a, b) => (a > b ? 1 : -1));
         return sorted;
       };
+      
       const isMobile = () => window.innerWidth < 768;
 
       const getSinglePlaceTemplate = (place) => {
@@ -349,7 +446,7 @@
       };
 
       const createPlaces = async () => {
-        const data = await getData();
+        //const data = await getData();
         const selectCtn = document.getElementById('selectCtn');
 
         const selectHTML = `<select id="select" class="select">
@@ -372,8 +469,9 @@
 
               event.currentTarget.classList.add('active');
               const id = e.currentTarget.id;
-              const selectedMarker = markers[id];
-              const selectedWindowsInfo = infoWindows[id];
+              // id is a random string uui generated by the crypto api
+              const selectedMarker = markers.find((marker) => marker.id === id);
+              const selectedWindowsInfo = infoWindows.find((infoWindow) => infoWindow.id === id);
               const place = data.find((place) => place.id === id);
               const markerCoors = selectedMarker?.getPosition();
               map?.setCenter(markerCoors);
@@ -423,11 +521,11 @@
           currentInfoWindow.close();
         });
       };
-
+      getData()
       createPlaces();
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+   
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA69Z2Vc24NhwJKPw7B2Xpfe30HnUfE5G4&callback=initMap" async defer></script>
   </body>
 </html>
