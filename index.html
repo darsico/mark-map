@@ -316,9 +316,7 @@
       };
 
       const filterData = (data) => {
-        if (!data || !Array.isArray(data)) {
-          return [];
-        }
+      
         const filtered = data
           .filter((place) => !place.coordenadas.includes('------') && typeof place.coordenadas !== undefined)
           .sort((a, b) => {
@@ -400,7 +398,7 @@
       const isMobile = () => window.innerWidth < 768;
 
       const getSinglePlaceTemplate = (place) => {
-        if(!place) return '';
+
         const buttonTemplate = `<div class="place" id="${place?.id}">
             <h2 class="place_district">${sanitizeUpper(place?.distrito)}</h2>
             <h1 class="place_compania">${sanitizeUpper(place?.compania)}</h1>
@@ -417,7 +415,6 @@
       };
 
       const getSwiperTemplate = (data) => {
-        if(!data) return '';
         const swiperTemplate = `<div class="swiper-container">
           <div class="swiper-wrapper">
             ${data
