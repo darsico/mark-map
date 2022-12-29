@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!-- Copy useful link and script tags -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- End copy -->
 
     <title>Store Finder</title>
 
+<!-- Copy from here (CSS) -->
     <style>
       #storeFinder {
         font-family: 'Jost', sans-serif;
@@ -189,9 +192,12 @@
         }
 
     </style>
+<!-- End copy (CSS) -->
+
   </head>
   <body>
 
+<!-- Copy from here (HTML) -->
     <section id="storeFinder">
       <div  class="container">
         <div class="configCtn">
@@ -204,9 +210,10 @@
         </div>
         <div id="map" style="width: auto" class="map"></div>
       </div>
-    
-  </section>
+    </section>
+<!-- End copy (HTML) -->
 
+<!-- Copy from here JS and Map API script tag -->
     <script>
       /*change `petsData` variable with the shopify json data */ 
       const petsData = [
@@ -536,7 +543,8 @@
       getData();
       createPlaces();
     </script>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA69Z2Vc24NhwJKPw7B2Xpfe30HnUfE5G4&callback=initMap" async defer></script>
+<!-- End copy -->
+    
   </body>
 </html>
