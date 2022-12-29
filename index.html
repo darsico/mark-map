@@ -5,18 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Copy from here (useful link and script tags) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- End -->
 
     <title>Store Finder</title>
 
-<!-- Copy from here (styles) -->
     <style>
       #storeFinder {
         font-family: 'Jost', sans-serif;
@@ -190,11 +187,9 @@
         }
 
     </style>
-<!-- End -->
   </head>
   <body>
 
-<!-- Copy from here (html) -->
     <section id="storeFinder">
       <div  class="container">
         <div class="configCtn">
@@ -209,11 +204,9 @@
       </div>
     
   </section>
-<!-- End -->
 
- <!-- Copy from here  (script)-->
     <script>
-      // change `petsData` variable with the shopify json data 
+      /*change `petsData` variable with the shopify json data */ 
       const petsData = [
       {
         "id": "1",
@@ -282,7 +275,7 @@
       },
       ]
       
-      //Marker icon can be changed here
+      /*Marker icon can be changed here */
       const markerIcon = 'https://res.cloudinary.com/dqp2lunnu/image/upload/v1672107793/Cluster/marker-basa_kv9up1.png';
 
       let map = null;
@@ -449,8 +442,8 @@
           defaultTemplate = getDesktopTemplate(data);
           placesDesktop.innerHTML = defaultTemplate;
         }
-        //const desktopTemplate = getDesktopTemplate(data);
-        //const swiperTemplate = getSwiperTemplate(data);
+        /* const desktopTemplate = getDesktopTemplate(data); */
+        /* const swiperTemplate = getSwiperTemplate(data); */
 
         if (isMobile()) {
           const swiper = new Swiper('.swiper-container', {
@@ -545,6 +538,5 @@
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA69Z2Vc24NhwJKPw7B2Xpfe30HnUfE5G4&callback=initMap" async defer></script>
-<!-- End -->
   </body>
 </html>
